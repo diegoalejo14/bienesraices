@@ -1,0 +1,24 @@
+<div>
+    <div class="row" *ngFor="let tipo of labels">
+        <div class="col">
+            {{tipo.nombre}}
+        </div>
+        <div class="col">
+            <select 
+            #myselect
+            (change)="calcular(myselect.value,tipo)">
+            <option value="0">Seleccione una opcion</option>
+                <option value="{{opcion.calificacion}}" *ngFor="let opcion of tipo.valores">
+                    {{opcion.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <label>{{tipo.ponderado}}</label>
+        </div>
+        <div class="col">
+                <label>{{tipo.total}}</label>
+        </div>
+    </div>
+    <h1 [ngClass]="{'apto':total>=80,'noApto':total<80}">Total:{{total}}</h1>
+</div>
